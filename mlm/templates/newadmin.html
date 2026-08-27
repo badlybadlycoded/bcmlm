@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Platform Administrator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .header-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;            /* Vertically centers the text, links, and forms */
+            justify-content: space-between; /* Spaces the items evenly across the entire width */
+            gap: 15px;                      /* Adds a minimum space between items so they don't touch */
+       }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        /* Tab styling */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 4px 4px 0 0;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #ccc;
+            font-weight: bold;
+        }
+        .tabcontent {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            resize: vertical;
+            font-family: monospace;
+        }
+        button[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .top-ribbon {
+            display: flex;
+            align-items: center;            /* Vertically centers the text, links, and forms */
+            justify-content: space-between; /* Spaces the items evenly across the entire width */
+            gap: 15px;                      /* Adds a minimum space between items so they don't touch */
+    
+            /* Optional visual styling to make it look like a ribbon */
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Removes default margins from the forms so they align perfectly with the text */
+        .top-ribbon form {
+            margin: 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top-ribbon">
+        <b>BCMLM Admin Panel</b>
+        Domain: {{domain}}
+        {{#platform}}<a href="addAdmin">Add admin</a>{{/platform}}
+        {{#platform}}<a href="addList">Add list</a>{{/platform}}
+        {{#platform}}<a href="rmadmin">Remove admin</a>{{/platform}}
+        <form method="get" action="rmlist">
+            Delete List:
+            <select name="list" id="rmlist">
+                {{#authlists}}
+                <option value="{{.}}">{{.}}</option>
+                {{/authlists}}
+            </select>
+            <input type="submit" value="Go">
+        </form>
+        <form method="get" action="viewlog">
+            View Log:
+            <select name="list" id="loglist">
+                {{#authlists}}
+                <option value="{{.}}">{{.}}</option>
+                {{/authlists}}
+            </select>
+            <input type="submit" value="Go">
+        </form>
+        <form method="get" action="editlist">
+            Configure List:
+            <select name="list" id="edtlist">
+                {{#authlists}}
+                <option value="{{.}}">{{.}}</option>
+                {{/authlists}}
+            </select>
+            <input type="submit" value="Go">
+        </form>
+        <a href="logout">Logout</a>
+    </div>
+
+    <form method="get" action="addAdmin">
+        
+        <!-- Header Section -->
+        <div class="header-section">
+            <div class="form-group">
+                <label for="admin">Enter email address of new admin:</label>
+                <input type="email" name="admin" id="admin">
+            </div>
+            <button type="submit">Continue</button>
+        </div>
+
+    </form>
+</body>
+</html>

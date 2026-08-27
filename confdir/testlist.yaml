@@ -1,0 +1,11 @@
+listname: testlist # probably should be deleted
+open: false
+ratelimit: 100
+trailer: Sent using BCMLM
+trailer: To unsubscribe, visit https://localhost/unsubscribe?list=testlist
+admins:
+  - root@localhost
+senders:
+  - root@localhost 
+subs:
+  - nobody@localhost
