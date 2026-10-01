@@ -58,3 +58,4 @@ sudo chmod 644 /etc/systemd/system/bcmlm.service
 sudo cp bcmbm.service /etc/systemd/system/
 sudo chown root:root /etc/systemd/system/bcmbm.service
 sudo chmod 644 /etc/systemd/system/bcmbm.service
+sudo systemctl reload-daemon
